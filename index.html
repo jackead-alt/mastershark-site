@@ -201,6 +201,22 @@
     .hero-cta .btn{flex:1;justify-content:center}
   }
 </style>
+<script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+<script>
+  // LINE LIFF 初始化：僅在 SDK 成功載入時執行，確保外部瀏覽器訪客不受影響
+  if (typeof liff !== 'undefined') {
+    liff.init({ liffId: "2010545145-M7XeC689" })
+      .then(() => {
+        if (liff.isLoggedIn()) {
+          liff.getProfile().then(profile => {
+            console.log("使用者：", profile.displayName);
+            console.log("userId：", profile.userId);
+          });
+        }
+      })
+      .catch(err => console.error("LIFF init 失敗：", err));
+  }
+</script>
 </head>
 <body>
 
